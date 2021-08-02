@@ -336,6 +336,28 @@ my %__methods = (
     participation => { url => "/repos/%s/%s/stats/participation", method => 'GET'},
     punch_card => { url => "/repos/%s/%s/stats/punch_card", method => 'GET'},
 
+    # https://developer.github.com/v3/repos#branches
+    get_branch_protection => { url => "/repos/%s/%s/branches/%s/protection", method => 'GET'},
+    update_branch_protection => { url => "/repos/%s/%s/branches/%s/protection", method => 'PUT', check_status => 200, args => 1 },
+    delete_branch_protection => { url => "/repos/%s/%s/branches/%s/protection", method => 'DELETE' },
+    get_admin_branch_protection => { url => "/repos/%s/%s/branches/%s/protection/enforce_admins", method => 'GET' },
+    set_admin_branch_protection => { url => "/repos/%s/%s/branches/%s/protection/enforce_admins", method => 'POST', check_status => 200, args => 1 },
+    delete_admin_branch_protection => { url => "/repos/%s/%s/branches/%s/protection/enforce_admins", method => 'DELETE', check_status => 204 },
+    get_pull_request_review_protection => { url => "/repos/%s/%s/branches/%s/protection/required_pull_request_reviews", method => 'GET' },
+    patch_pull_request_review_protection => { url => "/repos/%s/%s/branches/%s/protection/required_pull_request_reviews", method => 'PATCH', check_status => 200, args => 1 },
+    delete_pull_request_review_protection => { url => "/repos/%s/%s/branches/%s/protection/required_pull_request_reviews", method => 'DELETE' },
+    get_commit_signature_protection => { url => "/repos/%s/%s/branches/%s/protection/required_signatures", method => 'GET' },
+    create_commit_signature_protection => { url => "/repos/%s/%s/branches/%s/protection/required_signatures", method => 'POST', check_status => 200, args => 1 },
+    delete_commit_signature_protection => { url => "/repos/%s/%s/branches/%s/protection/required_signatures", method => 'DELETE' },
+    get_status_checks_protection => { url => "/repos/%s/%s/branches/%s/protection/required_status_checks", method => 'GET' },
+    update_status_check_protection => { url => "/repos/%s/%s/branches/%s/protection/required_status_checks", method => 'PATCH', check_status => 200, args => 1 },
+    remove_status_check_protection => { url => "/repos/%s/%s/branches/%s/protection/required_status_checks", method => 'DELETE' },
+    get_all_status_check_contexts => { url => "/repos/%s/%s/branches/%s/protection/required_status_checks/contexts", method => 'GET' },
+    add_status_check_contexts => { url => "/repos/%s/%s/branches/%s/protection/required_status_checks/contexts", method => 'POST' },
+    set_status_check_contexts => { url => "/repos/%s/%s/branches/%s/protection/required_status_checks/contexts", method => 'PUT' },
+    remove_status_check_contexts => { url => "/repos/%s/%s/branches/%s/protection/required_status_checks/contexts", method => 'DELETE' },
+    get_access_restrictions => { url => "/repos/%s/%s/branches/%s/protection/restrictions", method => 'GET' },
+    delete_access_restrictions => { url => "/repos/%s/%s/branches/%s/protection/restrictions", method => 'DELETE' },
 );
 __build_methods(__PACKAGE__, %__methods);
 
